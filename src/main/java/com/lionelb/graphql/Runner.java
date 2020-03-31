@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 @Component
 public class Runner implements CommandLineRunner {
 
+    // this object allows me to format the Date object however I see
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
 

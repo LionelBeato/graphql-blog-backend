@@ -19,16 +19,19 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
 // this component can be thought of as a controller
 // it takes care of the "routing" of the graphql
+// by routing, I mean that this class would take care of managing what would otherwise be RESTful endpoints
 @Component
 public class GraphQLProvider {
 
     @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
 
+    @Autowired
     private GraphQL graphQL;
 
     // this method points to your schema and wires everything up
     // so that your schema works
+    // this annotation refers to when this method is executed; it'll execute once dependency injections are satisfied
     @PostConstruct
     public void init() throws Exception {
         URL url = Resources.getResource("schema.graphqls");
