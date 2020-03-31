@@ -26,7 +26,6 @@ public class GraphQLProvider {
     @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
 
-    @Autowired
     private GraphQL graphQL;
 
     // this method points to your schema and wires everything up
