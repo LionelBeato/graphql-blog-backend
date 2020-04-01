@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,13 +15,13 @@ public class Post {
     private int id;
     private Date date;
     private String title;
-    private String body;
+    private File body;
 
     public Post (){
 
     }
 
-    public Post(Date date, String title, String body) {
+    public Post(Date date, String title, File body) {
         this.date = date;
         this.title = title;
         this.body = body;
@@ -42,11 +43,11 @@ public class Post {
         this.title = title;
     }
 
-    public String getBody() {
+    public File getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(File body) {
         this.body = body;
     }
 }

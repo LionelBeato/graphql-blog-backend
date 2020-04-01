@@ -66,7 +66,7 @@ public class GraphQLDataFetchers {
 
     public DataFetcher getBookByIdDataFetcher() {
         // DataFetchingEnvironment is like an anonymous inner class
-        // it's technically a functional interface: this is more succint...
+        // it's technically a functional interface: this is more succinct...
         // ...specifically calls the get method inside of the interface
         return dataFetchingEnvironment -> {
             String bookId = dataFetchingEnvironment.getArgument("id");
@@ -82,7 +82,7 @@ public class GraphQLDataFetchers {
         return dataFetchingEnvironment -> {
             Map<String, String> book = dataFetchingEnvironment.getSource();
             String authorId = book.get("authorId");
-            return authors
+            return authors 
                     .stream()
                     .filter(author -> author.get("id").equals(authorId))
                     .findFirst()
