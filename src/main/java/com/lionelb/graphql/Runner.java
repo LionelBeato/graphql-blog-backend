@@ -8,12 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -21,14 +20,25 @@ public class Runner implements CommandLineRunner {
     // this object allows me to format the Date object however I see
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-    File fileOne = ResourceUtils.getFile("classpath:first.txt");
-    File fileTwo = ResourceUtils.getFile("classpath:second.txt");
-    File fileThree = ResourceUtils.getFile("classpath:third.txt");
+   // File fileOne = ResourceUtils.getFile("classpath:first.txt");
+  //  File fileTwo = ResourceUtils.getFile("classpath:second.txt");
+ //   File fileThree = ResourceUtils.getFile("classpath:third.txt");
 
-    String contentOne = new String(Files.readAllBytes(fileOne.toPath()));
-    String contentTwo = new String(Files.readAllBytes(fileTwo.toPath()));
-    String contentThree = new String(Files.readAllBytes(fileThree.toPath()));
+    ClassLoader cl = this.getClass().getClassLoader();
+    InputStream inputStreamOne = cl.getResourceAsStream("first.txt");
+    InputStream inputStreamTwo = cl.getResourceAsStream("second.txt");
+    InputStream inputStreamThree = cl.getResourceAsStream("third.txt");
 
+
+    Scanner scannerOne = new Scanner(inputStreamOne);
+    Scanner scannerTwo = new Scanner(inputStreamTwo);
+    Scanner scannerThree = new Scanner(inputStreamThree);
+
+
+
+    // String contentOne = new BufferedInputStream(inputStreamOne);
+   // String contentTwo = String.valueOf(inputStreamTwo);
+   // String contentThree = String.valueOf(inputStreamThree);
 
 
     @Autowired
@@ -40,14 +50,23 @@ public class Runner implements CommandLineRunner {
     public Runner() throws IOException {
     }
 
+
+
     @Override
     public void run(String... args) throws Exception {
+        String textOne = scannerOne.useDelimiter("\\A").next();
+        String textTwo = scannerTwo.useDelimiter("\\A").next();
+        String textThree = scannerThree.useDelimiter("\\A").next();
 
 
 
-        postRepo.save(new Post(sdf.format(new Date()), "hello", contentOne));
-        postRepo.save(new Post(sdf.format(new Date()), "new post", contentTwo));
-        postRepo.save(new Post(sdf.format(new Date()), "other rambling", contentThree));
+
+
+        postRepo.save(new Post(sdf.format(new Date()), "hello", textOne));
+        postRepo.save(new Post(sdf.format(new Date()), "new post", textTwo));
+        postRepo.save(new Post(sdf.format(new Date()), "other rambling", textThree));
+
+        System.out.println(textOne);
 
 
     }
