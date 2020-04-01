@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -20,9 +21,9 @@ public class Runner implements CommandLineRunner {
     // this object allows me to format the Date object however I see
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-    File fileOne = ResourceUtils.getFile("classpath:posts/first.txt");
-    File fileTwo = ResourceUtils.getFile("classpath:posts/second.txt");
-    File fileThree = ResourceUtils.getFile("classpath:posts/third.txt");
+    File fileOne = ResourceUtils.getFile("classpath:static/first.txt");
+    File fileTwo = ResourceUtils.getFile("classpath:static/second.txt");
+    File fileThree = ResourceUtils.getFile("classpath:static/third.txt");
 
     String contentOne = new String(Files.readAllBytes(fileOne.toPath()));
     String contentTwo = new String(Files.readAllBytes(fileTwo.toPath()));
@@ -44,9 +45,9 @@ public class Runner implements CommandLineRunner {
 
 
 
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "hello", contentOne));
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "new post", contentTwo));
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "other rambling", contentThree));
+        postRepo.save(new Post(sdf.format(new Date()), "hello", contentOne));
+        postRepo.save(new Post(sdf.format(new Date()), "new post", contentTwo));
+        postRepo.save(new Post(sdf.format(new Date()), "other rambling", contentThree));
 
 
     }

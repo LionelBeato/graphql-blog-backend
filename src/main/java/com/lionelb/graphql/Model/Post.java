@@ -10,7 +10,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    private Date date;
+    private String date;
     private String title;
 
 
@@ -21,17 +21,17 @@ public class Post {
 
     }
 
-    public Post(Date date, String title, String body) {
+    public Post(String date, String title, String body) {
         this.date = date;
         this.title = title;
         this.body = body;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
