@@ -1,9 +1,6 @@
 package com.lionelb.graphql.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,13 +12,16 @@ public class Post {
     private int id;
     private Date date;
     private String title;
-    private File body;
+
+
+    @Column(name = "body", columnDefinition="TEXT")
+    private String body;
 
     public Post (){
 
     }
 
-    public Post(Date date, String title, File body) {
+    public Post(Date date, String title, String body) {
         this.date = date;
         this.title = title;
         this.body = body;
@@ -43,11 +43,11 @@ public class Post {
         this.title = title;
     }
 
-    public File getBody() {
+    public String getBody() {
         return body;
     }
 
-    public void setBody(File body) {
+    public void setBody(String body) {
         this.body = body;
     }
 }

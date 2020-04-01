@@ -44,9 +44,9 @@ public class Runner implements CommandLineRunner {
 
 
 
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "hello", fileOne));
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "new post", fileTwo));
-        postRepo.save(new Post(sdf.parse("2020/03/30"), "other rambling", fileThree));
+        postRepo.save(new Post(sdf.parse("2020/03/30"), "hello", contentOne));
+        postRepo.save(new Post(sdf.parse("2020/03/30"), "new post", contentTwo));
+        postRepo.save(new Post(sdf.parse("2020/03/30"), "other rambling", contentThree));
 
 
     }
