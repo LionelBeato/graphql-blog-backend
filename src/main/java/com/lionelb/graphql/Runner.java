@@ -21,9 +21,9 @@ public class Runner implements CommandLineRunner {
     // this object allows me to format the Date object however I see
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-    File fileOne = ResourceUtils.getFile("classpath:static/first.txt");
-    File fileTwo = ResourceUtils.getFile("classpath:static/second.txt");
-    File fileThree = ResourceUtils.getFile("classpath:static/third.txt");
+    File fileOne = ResourceUtils.getFile("classpath:first.txt");
+    File fileTwo = ResourceUtils.getFile("classpath:second.txt");
+    File fileThree = ResourceUtils.getFile("classpath:third.txt");
 
     String contentOne = new String(Files.readAllBytes(fileOne.toPath()));
     String contentTwo = new String(Files.readAllBytes(fileTwo.toPath()));
