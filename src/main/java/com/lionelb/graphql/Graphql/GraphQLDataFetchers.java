@@ -8,7 +8,9 @@ import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -87,6 +89,17 @@ public class GraphQLDataFetchers {
                     .filter(author -> author.get("id").equals(authorId))
                     .findFirst()
                     .orElse(null);
+        };
+    }
+
+    public DataFetcher createPost(){
+        return dataFetchingEnvironment -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String postTitle = dataFetchingEnvironment.getArgument("title");
+            String postBody = dataFetchingEnvironment.getArgument("body");
+            Post newPost = new Post(sdf.format(new Date()), postTitle, postBody);
+            postRepo.save(newPost);
+            return newPost;
         };
     }
 
