@@ -6,10 +6,8 @@ import com.lionelb.graphql.Repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -25,9 +23,9 @@ public class Runner implements CommandLineRunner {
  //   File fileThree = ResourceUtils.getFile("classpath:third.txt");
 
     ClassLoader cl = this.getClass().getClassLoader();
-    InputStream inputStreamOne = cl.getResourceAsStream("first.txt");
-    InputStream inputStreamTwo = cl.getResourceAsStream("second.txt");
-    InputStream inputStreamThree = cl.getResourceAsStream("third.txt");
+    InputStream inputStreamOne = cl.getResourceAsStream("posts/first.txt");
+    InputStream inputStreamTwo = cl.getResourceAsStream("posts/second.txt");
+    InputStream inputStreamThree = cl.getResourceAsStream("posts/third.txt");
 
 
     Scanner scannerOne = new Scanner(inputStreamOne);
