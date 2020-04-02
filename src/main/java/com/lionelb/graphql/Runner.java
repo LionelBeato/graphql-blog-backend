@@ -6,8 +6,12 @@ import com.lionelb.graphql.Repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import com.google.common.io.CharStreams;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -59,12 +63,13 @@ public class Runner implements CommandLineRunner {
 
 
 
-
         postRepo.save(new Post(sdf.format(new Date()), "hello", textOne));
         postRepo.save(new Post(sdf.format(new Date()), "new post", textTwo));
         postRepo.save(new Post(sdf.format(new Date()), "other rambling", textThree));
 
+
         System.out.println(textOne);
+        System.out.println(textTwo);
 
 
     }
