@@ -99,6 +99,7 @@ public class GraphQLDataFetchers {
             String postBody = dataFetchingEnvironment.getArgument("body");
             Post newPost = new Post(sdf.format(new Date()), postTitle, postBody);
             postRepo.save(newPost);
+
             posts = StreamSupport
                     .stream(postRepo.findAll().spliterator(), false)
                     .collect(Collectors.toList());
