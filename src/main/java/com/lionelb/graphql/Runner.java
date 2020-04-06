@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-@Component
 public class Runner implements CommandLineRunner {
 
     // this object allows me to format the Date object however I see
