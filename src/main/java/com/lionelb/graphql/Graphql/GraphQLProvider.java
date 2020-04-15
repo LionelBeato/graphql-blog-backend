@@ -58,7 +58,7 @@ public class GraphQLProvider {
                 .type(newTypeWiring("Query")
                 .dataFetcher("posts", graphQLDataFetchers.getPostsDataFetcher()))
                 .type(newTypeWiring("Query")
-                .dataFetcher("pagedPosts", graphQLDataFetchers.getPagedPostsDataFetcher()))
+                .dataFetcher("findAllPosts", graphQLDataFetchers.getPagedPostsDataFetcher()))
                 .type(newTypeWiring("Mutation")
                         .dataFetcher("createPost", graphQLDataFetchers.createPost()))
                 .build();
