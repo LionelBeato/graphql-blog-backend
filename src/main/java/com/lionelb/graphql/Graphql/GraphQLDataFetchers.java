@@ -6,6 +6,8 @@ import com.lionelb.graphql.Model.Post;
 import com.lionelb.graphql.Repo.PostRepo;
 import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -89,6 +91,13 @@ public class GraphQLDataFetchers {
                     .filter(author -> author.get("id").equals(authorId))
                     .findFirst()
                     .orElse(null);
+        };
+    }
+
+    public DataFetcher getPagedPostsDataFetcher(){
+        return dataFetchingEnvironment -> {
+            Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
+            return postRepo.findAllPosts(firstPageWithTwoElements);
         };
     }
 

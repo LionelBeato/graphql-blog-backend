@@ -1,7 +1,12 @@
 package com.lionelb.graphql.Repo;
 
 import com.lionelb.graphql.Model.Post;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface PostRepo extends CrudRepository<Post, Long> {
+import java.util.List;
+
+public interface PostRepo extends PagingAndSortingRepository<Post, Long> {
+
+    List<Post> findAllPosts(Pageable pageable);
 }

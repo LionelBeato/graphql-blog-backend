@@ -1,6 +1,9 @@
 type Query {
     bookById(id: ID): Book
     posts: [Post!]
+    pagedPosts:[Post!]
+
+
 }
 
 type Mutation {
