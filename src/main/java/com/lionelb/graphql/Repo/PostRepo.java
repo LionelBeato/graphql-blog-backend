@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PostRepo extends PagingAndSortingRepository<Post, Long> {
 
-    List<Post> findAllPosts(Pageable pageable);
+    List<Post> pagedPosts(Pageable pageable);
 }

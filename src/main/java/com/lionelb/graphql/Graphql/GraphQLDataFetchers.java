@@ -97,7 +97,7 @@ public class GraphQLDataFetchers {
     public DataFetcher getPagedPostsDataFetcher(){
         return dataFetchingEnvironment -> {
             Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-            return postRepo.findAllPosts(firstPageWithTwoElements);
+            return postRepo.pagedPosts(firstPageWithTwoElements);
         };
     }
 
