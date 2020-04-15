@@ -6,6 +6,7 @@ import com.lionelb.graphql.Model.Post;
 import com.lionelb.graphql.Repo.PostRepo;
 import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -96,8 +97,13 @@ public class GraphQLDataFetchers {
 
     public DataFetcher getPagedPostsDataFetcher(){
         return dataFetchingEnvironment -> {
-            Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-            return postRepo.findAllPosts(firstPageWithTwoElements);
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+
+
+            Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
+            Page<Post> allPosts = postRepo.findAll(firstPageWithTwoElements);
+            return allPosts;
         };
     }
 

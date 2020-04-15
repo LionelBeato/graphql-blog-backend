@@ -1,10 +1,10 @@
 type Query {
     bookById(id: ID): Book
     posts: [Post!]
-    findAllPosts:[Post!]
-
+    findAllPosts(pageNumber:Int, pageSize:Int):[Post!]
 
 }
+
 
 type Mutation {
     createPost(date:String, title:String, body:String):Post!
